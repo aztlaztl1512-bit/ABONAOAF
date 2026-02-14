@@ -4,104 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تقرير إنجاز حقيبة القدرات - أ. عبدالعزيز الفيفي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #1a5f7a;
-            --secondary-color: #c8a2c8;
-            --accent-color: #ffd700;
-            --bg-color: #f0f2f5;
-            --text-color: #2d3436;
-        }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; }
+        :root { --primary: #1a5f7a; --accent: #ffd700; --bg: #f8f9fa; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg); color: #333; margin: 0; padding: 0; }
+        header { background: linear-gradient(135deg, #1a5f7a 0%, #002b36 100%); color: white; padding: 50px 20px; text-align: center; border-bottom: 6px solid var(--accent); }
+        .container { max-width: 900px; margin: -40px auto 50px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h1 { margin: 0; font-weight: 900; font-size: 2em; }
+        h2 { color: var(--primary); border-right: 5px solid var(--accent); padding-right: 15px; margin-top: 40px; }
         
-        /* الهيدر الفخم */
-        header { 
-            background: linear-gradient(135deg, #1a5f7a 0%, #002b36 100%); 
-            color: white; padding: 60px 20px; text-align: center; 
-            border-bottom: 8px solid var(--accent-color);
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-        
-        .container { max-width: 1000px; margin: -50px auto 50px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        
-        h1 { font-weight: 900; font-size: 2.5em; margin-bottom: 10px; }
-        h2 { color: var(--primary-color); border-right: 5px solid var(--accent-color); padding-right: 15px; margin-top: 40px; }
+        /* تصميم زر رفع الصور */
+        .upload-section { background: #fdf9f0; border: 2px dashed #d1d8e0; padding: 20px; border-radius: 12px; text-align: center; margin: 20px 0; }
+        .upload-btn { background: var(--primary); color: white; padding: 10px 20px; border-radius: 8px; cursor: pointer; display: inline-block; margin-top: 10px; font-weight: bold; }
+        .upload-btn:hover { background: #002b36; }
+        input[type="file"] { display: none; }
 
-        /* البطاقات الإحصائية */
-        .stats-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin: 30px 0; }
-        .stat-item { background: #f8f9fa; padding: 20px; border-radius: 15px; text-align: center; transition: 0.3s; border: 1px solid #eee; }
-        .stat-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .stat-num { font-size: 2em; font-weight: 900; color: var(--primary-color); display: block; }
+        .report-img { width: 100%; border-radius: 12px; display: none; margin-top: 20px; border: 1px solid #ddd; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 25px 0; }
+        .stat-card { background: #f1f4f6; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #ddd; }
+        .stat-num { font-size: 2em; font-weight: 900; color: var(--primary); display: block; }
         
-        /* عرض الصور */
-        .img-box { text-align: center; margin: 40px 0; border: 2px solid #eee; padding: 15px; border-radius: 15px; background: #fff; }
-        .img-box img { max-width: 100%; border-radius: 10px; transition: 0.5s; }
-        .img-box img:hover { transform: scale(1.02); }
-        .img-caption { display: block; margin-top: 15px; font-weight: bold; color: #666; font-size: 0.9em; }
-
-        /* التفاصيل التقنية */
-        .feature-list { list-style: none; padding: 0; }
-        .feature-list li { background: #fff; margin-bottom: 10px; padding: 15px; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.02); display: flex; align-items: center; }
-        .feature-list li::before { content: '✨'; margin-left: 15px; }
-
-        footer { background: #2d3436; color: white; text-align: center; padding: 40px; margin-top: 50px; }
-        .signature { font-family: 'Cairo'; font-weight: 700; color: var(--accent-color); font-size: 1.2em; }
+        footer { background: #222; color: white; text-align: center; padding: 30px; margin-top: 50px; }
+        @media print { .upload-section { display: none; } } /* إخفاء أزرار الرفع عند الطباعة */
     </style>
 </head>
 <body>
 
 <header>
     <h1>تقرير الإنجاز الإبداعي</h1>
-    <p style="font-size: 1.2em; opacity: 0.9;">حقيبة القدرات الرقمية المبرمجة - القسم اللفظي</p>
-    <div style="margin-top: 20px;">
-        <span class="signature">أ. عبدالعزيز الفيفي</span><br>
-        <span>ثانوية الأمير عبدالمجيد 🎓</span>
-    </div>
+    <p>منصة القدرات اللفظية الرقمية لثانوية الأمير عبدالمجيد 🎓</p>
+    <p><strong>أ. عبدالعزيز الفيفي</strong></p>
 </header>
 
 <div class="container">
-    <h2>📌 نبذة عن المنصة</h2>
-    <p>بفضل الله، تم بناء منصة تعليمية متكاملة تهدف إلى تحويل تدريب القدرات من النمط الورقي التقليدي إلى نمط تفاعلي ذكي. المنصة مبرمجة لتقدم للطالب محاكاة حقيقية للاختبارات الرسمية مع تعقيب تعليمي فوري.</p>
-
-    <div class="stats-wrapper">
-        <div class="stat-item"><span class="stat-num">139</span>إجمالي الاختبارات</div>
-        <div class="stat-item"><span class="stat-num">10</span>أقسام رئيسية</div>
-        <div class="stat-item"><span class="stat-num">27</span>نموذج تناظر</div>
-        <div class="stat-item"><span class="stat-num">45ث</span>وقت السؤال</div>
+    <h2>📊 ملخص المحتوى والإنجاز</h2>
+    <p>تم بناء نظام اختبارات تفاعلي يحتوي على 139 اختباراً مقسماً على 10 مهارات أساسية.</p>
+    
+    <div class="stats-grid">
+        <div class="stat-card"><span class="stat-num">139</span>اختباراً مبرمجاً</div>
+        <div class="stat-card"><span class="stat-num">10</span>أقسام تعليمية</div>
     </div>
 
-    <div class="img-box">
-        <img src="https://files.catbox.moe/o6o2g1.jpg" alt="تحليل المحتوى">
-        <span class="img-caption">الشكل (1): رسم بياني يوضح توزيع الـ 139 اختباراً على المهارات المختلفة</span>
+    <div class="upload-section">
+        <p>📸 <strong>أضف صورة الإحصائيات (الرسم البياني) هنا:</strong></p>
+        <label class="upload-btn">
+            اختر صورة الإحصائيات
+            <input type="file" accept="image/*" onchange="previewImage(event, 'stats-preview')">
+        </label>
+        <img id="stats-preview" class="report-img" alt="إحصائيات المنصة">
     </div>
 
-    <h2>💎 المميزات الإبداعية المنجزة</h2>
-    <ul class="feature-list">
-        <li><strong>التصحيح المفسّر:</strong> لا يكتفي النظام بإعطاء الإجابة، بل يشرح "العلاقة المنطقية" (مثل: جزء من كل، مكانية) لضمان الفهم.</li>
-        <li><strong>نظام التلميحات (Hints):</strong> تلميحات تربوية ذكية تظهر للطالب بلمسة زر لتوجيه تفكيره.</li>
-        <li><strong>الهوية المؤسسية:</strong> توقيع المعلم واسم المدرسة يظهر في كل سؤال لتعزيز انتماء الطلاب.</li>
-        <li><strong>النتائج المبسطة:</strong> تم تخصيص مخرجات الاختبار لتكون واضحة ومباشرة تركز على التحفيز.</li>
+    <h2>💡 المميزات التقنية والتربوية</h2>
+    <ul>
+        <li><strong>التفاعل المباشر:</strong> تقديم تغذية راجعة فورية مع شرح للعلاقات اللفظية.</li>
+        <li><strong>نظام التلميحات:</strong> تلميحات مبرمجة لمساعدة الطالب عند التعثر.</li>
     </ul>
 
-    <div class="img-box">
-        <img src="https://files.catbox.moe/k2uiz4.jpg" alt="واجهة الاختبار">
-        <span class="img-caption">الشكل (2): واجهة التحدي التفاعلية وتصميم الخيارات الاحترافي</span>
+    <div class="upload-section">
+        <p>📸 <strong>أضف صورة لواجهة الاختبار (السؤال) هنا:</strong></p>
+        <label class="upload-btn">
+            اختر صورة السؤال
+            <input type="file" accept="image/*" onchange="previewImage(event, 'quiz-preview')">
+        </label>
+        <img id="quiz-preview" class="report-img" alt="واجهة الاختبار">
     </div>
 
-    <div class="img-box">
-        <img src="https://files.catbox.moe/7x706t.jpg" alt="شرح الإجابات">
-        <span class="img-caption">الشكل (3): نموذج من التغذية الراجعة وشرح العلاقات اللفظية</span>
-    </div>
-
-    <h2>🚀 ما تم إنجازه حتى الآن</h2>
-    <p>تم الانتهاء من 15 نموذجاً لكل من الأقسام التالية: التناظر، الارتباط، إكمال الجمل، والخطأ السياقي. وجاري العمل حالياً على نماذج "استيعاب المقروء" حيث تم إنجاز المرحلة الرابعة منها بنجاح.</p>
+    <h2>📝 كلمة عن العمل</h2>
+    <p>هذا العمل هو نتاج جهد مستمر لتحويل المحتوى التعليمي إلى تجربة رقمية، مع التركيز على تبسيط النتائج لرفع معنويات الطلاب [cite: 2026-01-27].</p>
 </div>
 
 <footer>
-    <p>هذا التقرير مبرمج خصيصاً لمدير ثانوية الأمير عبدالمجيد</p>
-    <p>صنع بكل فخر بواسطة <strong>أ. عبدالعزيز الفيفي</strong> 🎓 2026</p>
+    <p>أ. عبدالعزيز الفيفي - ثانوية الأمير عبدالمجيد 🎓</p>
 </footer>
+
+<script>
+    function previewImage(event, imgId) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            const output = document.getElementById(imgId);
+            output.src = reader.result;
+            output.style.display = 'block'; // إظهار الصورة بعد اختيارها
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 
 </body>
 </html>
